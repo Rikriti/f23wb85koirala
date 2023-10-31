@@ -1,0 +1,17 @@
+extends layout
+block content
+  h1= title
+  p Welcome to the #{title} page 
+  -
+   let results = [
+    { elephantName: "Jake", elephantPrice: 10,0000, elephantOrigin: "Africa" },
+    { elephantName: "Willow", elephantPrice: 20,000, elephantOrigin: "Brazil" },
+    { elephantName: "Bettie", elephantPrice: 30,000, elephantOrigin: "Africa" }
+   ]
+  div.container-fluid
+    div.row
+      each item in results
+        div.col-sm-2
+        h3 Elephant Name: #{item.elephantName}
+        p Elephant Price: $#{item.elephantPrice}
+        p Origin of Elephant: #{item.elephantOrigin}
