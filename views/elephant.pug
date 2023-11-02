@@ -1,17 +1,26 @@
 extends layout
+
 block content
   h1= title
-  p Welcome to the #{title} page 
-  -
-   let results = [
-    { elephantName: "Jake", elephantPrice: 10,0000, elephantOrigin: "Africa" },
-    { elephantName: "Willow", elephantPrice: 20,000, elephantOrigin: "Brazil" },
-    { elephantName: "Bettie", elephantPrice: 30,000, elephantOrigin: "Africa" }
-   ]
-  div.container-fluid
-    div.row
-      each item in results
-        div.col-sm-2
-        h3 Elephant Name: #{item.elephantName}
-        p Elephant Price: $#{item.elephantPrice}
-        p Origin of Elephant: #{item.elephantOrigin}
+   script.
+    function buy(index) {
+      alert("You purchased item " + index);
+    }
+
+  .container-fluid
+    .row  
+      -
+        let elephants = [
+          { elephantName: 'Jake', elephantOrigin: "Brazil", elephantPrice: 500},
+          { elephantName: 'Rob', elephantOrigin: 'Africa', elephantPrice: 750},
+          { elephantName: 'Bettie', elephantOrigin: 'Thailand', elephantPrice: 600}
+        ]
+      
+      each elephant, index in elephants
+       div.row
+        div.col-sm-2(onclick="buy(" + index + ")")
+            h3 Name: #{elephant.elephantName}
+            p Elephant Origin: #{elephant.elephantOrigin}
+            p Elephant Price: #{elephant.elephantPrice}
+
+  
